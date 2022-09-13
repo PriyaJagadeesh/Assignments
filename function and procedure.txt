@@ -78,6 +78,52 @@ end;
 begin
 maxSalary(100);
 end;
+___________________________________________________________________________________________
+13/09/22
+
+1) Write a procedure for calculating bonus of employee no 205.
+
+create  or replace procedure bonusCal(emp_id IN integer)
+is
+bonus employees.salary%TYPE;
+begin 
+select (salary+nvl(commission_pct,0))into bonus from employees where employee_id=emp_id;
+
+dbms_output.put_line(bonus);
+end bonusCal;
+
+begin
+bonusCal(205);
+end;
+
+
+2. Write a procedure for giving bonus to employees based on below rules - if job_id is IT PROG 
+then salary will be increase by 1000 and if job_id is SA_REP then salary will be increase by 700.
+
+create or replace procedure giv_bonus(emp_id IN integer, jb_id IN varchar2)
+is
+ebonus number;
+begin
+    if jb_id like 'IT_PROG' then
+        select salary+1000 INTO ebonus from employees where employee_id = emp_id;
+    elsif jb_id like 'SA_REP' THEN
+        select salary+700 INTO ebonus from employees where employee_id = emp_id;
+    else
+        select salary INTO ebonus from employees where employee_id = emp_id;
+end if;
+dbms_output.put_line(ebonus);
+end;
+
+
+begin
+giv_bonus(103,'IT_PROG');
+end;
+
+
+
+
+
+
 
 
 
