@@ -1,0 +1,87 @@
+1) Create student grade calculator as function and procedure both?
+
+PROCEDURE:
+
+create or replace procedure gradeCal(marks IN integer)
+is
+ grade varchar2(30);
+BEGIN
+   if marks>=80 and marks<=100 then
+   grade:='A';
+   
+   elsif marks>=60 and marks<=79 then
+   grade:='B';
+
+   elsif marks>=40 and marks<=59 then
+   grade:='C';
+   
+   elsif marks>100 then
+   grade:='please provide valid marks and marks should be in between 100';
+   else
+   grade:='failure';
+   
+ end if;
+ dbms_output.put_line(grade);
+end gradeCal
+  
+
+FUNCTION CALL:
+
+begin 
+ gradeCal(86);
+end;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+FUNCTION:
+
+CREATE or REPLACE FUNCTION gradeCalculator(marks IN integer)
+return varchar2
+
+is
+ grade varchar2(100);
+ 
+BEGIN
+   if marks>=80 and marks<=100 then
+   grade:='A';
+   
+   elsif marks>=60 and marks<=79 then
+   grade:='B';
+   elsif marks>=40 and marks<=59 then
+   grade:='C';
+   elsif marks>100 then
+   grade:='please provide valid marks and marks should be in between 100';
+   else
+   grade:='failure';
+ return grade;
+end gradeCalculator;
+
+FUNCTION CALL:
+
+begin 
+dbms_output.put_line(gradeCalculator(30));
+end;
+
+_____________________________________________________
+
+2)create procedure for fetching maximum salary employee in department 100.
+
+
+CREATE or REPLACE PROCEDURE maxSalary(dept_id IN integer)
+is
+ emaxSalary employees.salary%TYPE;
+ begin
+ select max(salary) into emaxSalary from employees where department_id=dept_id;
+ 
+ dbms_output.put_line(emaxSalary);
+end; 
+
+begin
+maxSalary(100);
+end;
+
+
+
+
+
+ 
+ 

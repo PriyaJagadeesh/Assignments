@@ -1,0 +1,42 @@
+
+1)
+select to_char(hire_date,'YY') as year,count(*) as count from employees group by to_char(hire_date,'YY') order by 1;
+
+2) select department_id, max(salary) from employees group by department_id;
+ _______________________________________________________________________________________________________________
+8/9/22
+
+1) waq to display employees based on bonus department wise?
+
+select  first_name,(salary+nvl(commission_pct,0)) 
+as bonus, department_id from employees 
+order by department_id desc; 
+
+2) waq to display top salaried employees location wise-city?
+
+select max(salary) as topSalary,city from EMP_DETAILS_VIEW 
+group by city; 
+________________________________________________________________
+
+1)write a plsql block for calculating students grade
+if his marks are 80 to 90 grade A
+if marks are 70 to 60 grade B
+otherwise fail
+ you can take grade as vaeriable and proceed
+
+
+DECLARE 
+grade  varchar2(50);
+marks number:=30;
+BEGIN
+ if marks >= 80 then
+   grade := 'A';
+ 
+ elsif marks >= 60 then
+    grade :='B'; 
+ else
+    grade:='failure';
+ END IF;
+  dbms_output.put_line(' grade is  '||grade);
+  
+end;
