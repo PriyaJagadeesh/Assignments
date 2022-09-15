@@ -152,8 +152,10 @@ ________________________________________________________________________________
 
 create or replace procedure managemp(ejob_id IN varchar2)
 is
+empM_id employees.manager_id%TYPE;
+empE_id employees.employee_id%TYPE;
 erecord emp%ROWTYPE;
-
+--begin
 cursor emp_curr is
  select * from emp where job_id=ejob_id;
  
@@ -162,29 +164,20 @@ cursor emp_curr is
  loop
  fetch emp_curr into erecord;
  exit when emp_curr%notfound;
-   dbms_output.put_line('manager_id:'||erecord.manager_id );
-   dbms_output.put_line ('first_name:'|| erecord.first_name );
-   dbms_output.put_line('employee_id:'|| erecord.employee_id);
+ dbms_output.put_line('manager_id:'||erecord.manager_id );
+  dbms_output.put_line ('first_name:'|| erecord.first_name );
+  dbms_output.put_line('employee_id:'|| erecord.employee_id);
    dbms_output.put_line('------------------------');
  end loop;
- 
+
  close emp_curr;
  end;
- 
- 
- begin
- managemp('SA_REP');
- end;
 
 
 
-
-
-
-
-
-
-
+begin
+managemp('SA_REP');
+end;
 
 
 
