@@ -144,6 +144,12 @@ cursor emp_curr is
  close emp_curr;
  end;
  
+ 
+ begin
+ managemp('SA_REP');
+ end;
+
+
 
 
 
