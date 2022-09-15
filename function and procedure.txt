@@ -152,8 +152,6 @@ ________________________________________________________________________________
 
 create or replace procedure managemp(ejob_id IN varchar2)
 is
-empM_id employees.manager_id%TYPE;
-empE_id employees.employee_id%TYPE;
 erecord emp%ROWTYPE;
 --begin
 cursor emp_curr is
